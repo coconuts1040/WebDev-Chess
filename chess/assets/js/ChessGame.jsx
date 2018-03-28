@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ChessBoard from 'chessboardjs';
 import Chess from 'react-chess';
 import _ from 'underscore';
+import Fade from 'react-strap';
 
 export class ChessGame extends React.Component {
 
@@ -43,13 +44,29 @@ export class ChessGame extends React.Component {
         location.reload();
     }
 
+    winMessage() {
+        if (this.state.inCheck) {
+            if (this.state.turn == "w") {
+                return "Black wins by checkmate!";
+            } else {
+                return "White wins by checkmate!";
+            }
+        } else {
+            return "Draw by stalemate!";
+        }
+    }
 
     render() {
         var handleMove = this.handleMove.bind(this);
+        var winMessage = this.winMessage.bind(this);
         var pieceList = this.state.position;
         return (
+            <div>
             <div style={{ width: '500px' }}>
                 <Chess pieces={pieceList} onMovePiece={handleMove} />
+            </div>
+            <Fade in={this.state.gameOver}> <span id="over">Game Over!
+                {this.winMessage} </span></Fade>
             </div>
         );
     }
