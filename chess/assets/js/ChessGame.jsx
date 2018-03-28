@@ -24,11 +24,10 @@ export class ChessGame extends React.Component {
     gotView(view) {
         console.log("New view", view);
 
-        if (this.state.gameOver && this.state.inCheck) {
-            this.channel.push("checkmate", { turn: this.state.turn });
-        }
-        else if (this.state.gameOver) {
-            this.channel.push("stalemate", {});
+        if (view.game.gameOver) {
+            alert("Game Over");
+            // this.channel.push("stalemate", {})
+            //     .receive("ok", resp => { location = "localhost:4000/games/" + resp + "/edit/" });
         }
 
         this.setState(view.game);
