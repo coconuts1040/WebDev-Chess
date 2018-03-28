@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ChessBoard from 'chessboardjs';
 import Chess from 'react-chess';
 import _ from 'underscore';
-import Fade from 'react-strap';
+import Fade from 'reactstrap';
 
 export class ChessGame extends React.Component {
 
@@ -66,7 +65,7 @@ export class ChessGame extends React.Component {
                 <Chess pieces={pieceList} onMovePiece={handleMove} />
             </div>
             <Fade in={this.state.gameOver}> <span id="over">Game Over!
-                {this.winMessage} </span></Fade>
+                {winMessage} </span></Fade>
             </div>
         );
     }
