@@ -25,9 +25,15 @@ export class ChessGame extends React.Component {
         console.log("New view", view);
 
         if (view.game.gameOver) {
-            alert("Game Over");
-            // this.channel.push("stalemate", {})
-            //     .receive("ok", resp => { location = "localhost:4000/games/" + resp + "/edit/" });
+            if (view.game.inCheck) {
+                if (view.game.turn == "w") {
+                    alert("Game Over: Black wins by checkmate!");
+                } else {
+                    alert("Game Over: White wins by checkmate!");
+                }
+            } else {
+                alert("Game Over: Stalemate!");
+            }
         }
 
         this.setState(view.game);
