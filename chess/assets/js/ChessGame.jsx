@@ -43,30 +43,30 @@ export class ChessGame extends React.Component {
         location.reload();
     }
 
-    winMessage() {
-        if (this.state.inCheck) {
-            if (this.state.turn == "w") {
-                return "Black wins by checkmate!";
-            } else {
-                return "White wins by checkmate!";
-            }
-        } else {
-            return "Draw by stalemate!";
-        }
-    }
+    // winMessage() {
+    //     if (this.state.inCheck) {
+    //         if (this.state.turn == "w") {
+    //             return "Black wins by checkmate!";
+    //         } else {
+    //             return "White wins by checkmate!";
+    //         }
+    //     } else {
+    //         return "Draw by stalemate!";
+    //     }
+    // }
 
     render() {
         var handleMove = this.handleMove.bind(this);
-        var winMessage = this.winMessage.bind(this);
+        //        var winMessage = this.winMessage.bind(this);
         var pieceList = this.state.position;
         return (
-            <div>
+            //  <div>
             <div style={{ width: '500px' }}>
                 <Chess pieces={pieceList} onMovePiece={handleMove} />
             </div>
-            <Fade in={this.state.gameOver}> <span id="over">Game Over!
-                {winMessage} </span></Fade>
-            </div>
+            // <Fade in={this.state.gameOver}> <span id="over">Game Over!
+            //     {winMessage} </span></Fade>
+            // </div>
         );
     }
 }
